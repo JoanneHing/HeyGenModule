@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Avatar Viewer</title>
+    <style>
+        body { margin: 0; padding: 0; background: black; }
+        #avatarVideo { width: 100vw; height: 100vh; object-fit: cover; }
+        #loading, #error { 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%);
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">Loading avatar...</div>
+    <div id="error" style="display: none;"></div>
+    <video id="avatarVideo" style="display: none;" autoplay muted></video>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
