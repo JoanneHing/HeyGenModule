@@ -193,7 +193,7 @@ def start_session():
         session_data = result["data"]
         logger.info(f"Session created successfully: {session_data}")
 
-        # Step 2: Create API token for backend operations (optional - only needed for additional backend calls)
+        # Step 2: Create API token for backend operations (Not sure if needed)
         api_token = None
         try:
             token_result, token_status = heygen_api_request("streaming.create_token", method='POST')
@@ -245,7 +245,7 @@ def start_session():
             "status": "started"
         }
         
-        # Verify we have the access_token
+        # Verify we have the access_token for streaming
         if not response["access_token"]:
             logger.error("No access_token received from HeyGen API")
             return jsonify({"error": "No access_token received from HeyGen API"}), 500

@@ -47,7 +47,6 @@ async function main() {
 
     // Get the access_token from the session (for streaming connection)
     const accessToken = session.access_token;
-    const serverUrl = session.url;
     
     if (!accessToken) {
       throw new Error("Session found but access_token is missing");
@@ -132,10 +131,10 @@ async function main() {
     // Add a timeout to detect if the stream doesn't connect
     setTimeout(() => {
       if (!videoElement.srcObject) {
-        console.warn("No video stream received within 30 seconds.");
+        console.warn("No video stream received within 5 minutes.");
         showError("Connection timeout. The session may have expired or there may be a network issue. Please try restarting the session.");
       }
-    }, 30000);
+    }, 300000);
 
   } catch (err: any) {
     console.error("Error in main function:", err);
@@ -178,43 +177,3 @@ window.addEventListener('beforeunload', () => {
     avatar = null;
   }
 });
-
-// Add visibility change handler to pause/resume video
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) {
-    console.log("Page hidden, pausing video if playing");
-    if (videoElement && !videoElement.paused) {
-      videoElement.pause();
-    }
-  } else {
-    console.log("Page visible, resuming video if needed");
-    if (videoElement && videoElement.paused && videoElement.srcObject) {
-      videoElement.play().catch(e => console.warn("Could not resume video:", e));
-    }
-  }
-});
-
-// Test function to make the avatar speak via backend API (for debugging)
-(window as any).testSpeak = async (text: string) => {
-  try {
-    const response = await fetch('http://localhost:3001/api/avatar/speak', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        local_session_id: sessionId,
-        text: text || "Hello, this is a test message!"
-      })
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-    }
-
-    const result = await response.json();
-    console.log("Test speak command sent successfully:", result);
-  } catch (error) {
-    console.error("Test speak failed:", error);
-  }
-};
