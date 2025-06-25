@@ -120,6 +120,7 @@ Before you begin, ensure you have the following installed:
     Replace `ACTUAL_AVATAR_ID` with actual IDs from your HeyGen account. If it is not set, the default avatar_id would be chosen.
 
     Upon successful creation, the backend will return a `local_session_id` (or `session_id`).
+    The browser should be auto opened. Or else, move to step 2.
 
 2.  **View the Streaming Avatar:**
 
@@ -130,7 +131,7 @@ Before you begin, ensure you have the following installed:
     ```
     Replace `ACTUAL_SESSION_ID_HERE` with the actual session ID obtained from the `create` endpoint.
 
-    You should now see the streaming avatar in your browser. (But this part is currently on debugging stage)
+    You should now see the streaming avatar in your browser. (! This part is currently on debugging stage)
 
 ## Project Structure
 
