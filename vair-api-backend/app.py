@@ -177,7 +177,6 @@ def start_session():
         payload = {
             "avatar_id": avatar_id,
             "quality": quality,
-            "version": "v2"
         }
 
         result, status_code = heygen_api_request("streaming.new", method='POST', data=payload)
