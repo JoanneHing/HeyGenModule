@@ -17,7 +17,7 @@ Before you begin, ensure you have the following installed:
 * **Git:** For cloning the repository.
     * [Download Git](https://git-scm.com/downloads)
 * **HeyGen API Key:** You will need an API key from HeyGen to use their streaming avatar service.
-    * [Get HeyGen API Key](https://www.heygen.com/) (Sign up and check your account settings for API key)
+    * [Get HeyGen API Key](https://www.heygen.com/)
 
 ### Installation
 
